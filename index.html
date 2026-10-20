@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মা আসছেন - Durga Pujo Nostalgia</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;500;600;700&family=Atma:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Soft Overlay -->
+    <div class="bg-overlay"></div>
+
+    <!-- Header Navigation -->
+    <header class="top-nav">
+        <!-- Real Page Visitor Count (Left) -->
+        <div class="glass-widget visitor-widget">
+            <span class="pulse-dot"></span>
+            <i class="fas fa-eye"></i>
+            <span id="visitor-count">১</span> জন বর্তমানে পেজে আছেন
+        </div>
+
+        <!-- Center Clock & Countdown Container -->
+        <div class="center-widgets">
+            <!-- Combined Clock & Durga Pujo Countdown -->
+            <div class="glass-widget clock-countdown-widget">
+                <div class="clock-part">
+                    <i class="far fa-clock"></i>
+                    <span id="clock-hours">12</span><span class="colon-blink">:</span><span id="clock-minutes">00</span> <span id="clock-ampm">AM</span>
+                </div>
+                <span class="widget-divider"></span>
+                <div class="countdown-part">
+                    <i class="fas fa-calendar-alt"></i>
+                    <!-- <span>পূজো আসতে বাকি</span>
+                    <strong id="pujo-countdown">০ দিন ০০ ঘণ্টা ০০ মিনিট</strong> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Action Icons -->
+        <div class="user-profile-wrapper top-action-icons">
+            <button id="profile-btn" class="profile-icon-btn" aria-label="User Profile" title="User Profile">
+                <i class="far fa-user"></i>
+            </button>
+            <button id="nirghonto-btn" class="profile-icon-btn" aria-label="পূজা নির্ঘণ্ট" title="পূজা নির্ঘণ্ট">
+                <i class="far fa-calendar-days"></i>
+            </button>
+            <button id="puja-list-btn" class="profile-icon-btn" aria-label="কলকাতার পুজোর তালিকা" title="কলকাতার পুজোর তালিকা">
+                <i class="fas fa-qrcode"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Profile Popup Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-btn">&times;</span>
+            <div class="profile-header">
+                <div class="avatar">
+                    <i class="fas fa-dharmachakra fa-spin-slow"></i>
+                </div>
+                <h3>শারদ শুভেচ্ছা</h3>
+                <p class="user-subtitle">পূজোপ্রেমী দর্শনার্থী</p>
+            </div>
+            <div class="profile-body">
+                <div class="info-row">
+                    <i class="far fa-user-circle"></i>
+                    <span><strong>User:</strong> Sojalok</span>
+                </div>
+                <div class="social-links">
+                    <p class="social-title">Connect with us:</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/amisojalok" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/amisojalok" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/amisojalok" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-box">
+                    <i class="far fa-envelope"></i>
+                    <span>Contact us: <a href="mailto:ask.sojalok@gmail.com">ask.sojalok@gmail.com</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puja Nirghonto Modal -->
+    <div id="nirghonto-modal" class="modal">
+        <div class="modal-content glass-card nirghonto-modal-content">
+            <span class="close-btn nirghonto-close">&times;</span>
+            <div class="modal-heading-icon"><i class="far fa-calendar-days"></i></div>
+            <h3 class="utility-modal-title">পূজা নির্ঘণ্ট</h3>
+            <p class="utility-modal-subtitle">শারদীয়া দুর্গাপূজা ২০২৬ • কলকাতা</p>
+            <div class="nirghonto-table-wrap">
+                <table class="nirghonto-table">
+                    <thead>
+                        <tr><th>দিন</th><th>তারিখ</th><th>পূজার সময়সূচি</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>পঞ্চমী</td><td>১৫ অক্টোবর</td><td>পুজোর প্রস্তুতি / মণ্ডপ পরিদর্শন</td></tr>
+                        <tr><td>ষষ্ঠী</td><td>১৬ অক্টোবর</td><td>বোধন, আমন্ত্রণ ও অধিবাস — রাত ৮:৩০-এর মধ্যে</td></tr>
+                        <tr><td>সপ্তমী</td><td>১৭–১৮ অক্টোবর</td><td>নবপত্রিকা প্রবেশ ও সপ্তমী পূজা — সকাল ৭:০৪-এর পর</td></tr>
+                        <tr><td>অষ্টমী</td><td>১৯ অক্টোবর</td><td>অষ্টমী পূজা — সকাল ৭:০৫-এর আগে · সন্ধিপূজা — ৭:২৬–৮:১৪</td></tr>
+                        <tr><td>নবমী</td><td>২০ অক্টোবর</td><td>নবমী পূজা — সকাল ৮:৩১–৯:৩১</td></tr>
+                        <tr><td>দশমী</td><td>২১ অক্টোবর</td><td>বিজয়া দশমী পূজা — সকাল ৮:৩১-এর মধ্যে · বিসর্জন</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="nirghonto-note"><i class="fas fa-circle-info"></i> পঞ্জিকা ও স্থানীয় পুজো কমিটি অনুযায়ী নির্দিষ্ট সময় কিছুটা পরিবর্তিত হতে পারে।</p>
+        </div>
+    </div>
+
+    <!-- Kolkata Puja List / QR Modal -->
+    <div id="puja-list-modal" class="modal">
+        <div class="modal-content glass-card qr-modal-content">
+            <span class="close-btn puja-list-close">&times;</span>
+            <div class="modal-heading-icon"><i class="fas fa-qrcode"></i></div>
+            <h3 class="utility-modal-title">কলকাতার পুজোর তালিকা</h3>
+            <p class="utility-modal-subtitle">স্ক্যান করুন অথবা নিচের লিঙ্কে ক্লিক করুন</p>
+            <div class="qr-box">
+                <canvas id="puja-qr-code"></canvas>
+            </div>
+            <a id="puja-list-link" class="puja-list-link" href="https://kolkatakhoj.com/pandals/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-location-dot"></i> কলকাতার দুর্গাপুজোর তালিকা ও রুট দেখুন
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="hero-container">
+        <div class="title-wrapper">
+            <h1 class="main-title">শুভ সপ্তমী</h1>
+            <p class="sub-title">আগমনের সুবাস, কাশফুলের দোলা, ঢাকের আওয়াজ আর স্মৃতির শারদোৎসব</p>
+        </div>
+    </main>
+
+    <!-- Bottom Right Floating Dhak Interactive Trigger -->
+    <div class="bottom-right-dhak" id="dhak-sound-trigger" title="ঢাকে কাঠি দিন (Click or Press Space)">
+        <div class="dhak-glass-btn">
+            <i class="fas fa-drum dhak-icon"></i>
+            <span class="dhak-label">ঢাক বাজান</span>
+        </div>
+    </div>
+
+    <!-- Local Dhak Audio: place your downloaded file at audio/dhak.mp3 -->
+    <audio id="dhak-audio" src="audio/dhak.mp3" preload="auto" loop></audio>
+
+    <!-- Bottom Glassmorphism Transparent Music Player -->
+    <footer class="player-footer">
+        <div class="music-player-card glass-panel">
+            
+            <!-- Transparent Playlist Selector Tabs -->
+            <div class="playlist-tabs">
+                <!-- <button class="tab-btn active" data-playlist="pujo-prem">
+                    <i class="fas fa-heart"></i> পূজো প্রেম
+                </button> -->
+                <button class="tab-btn" data-playlist="pujo-radio">
+                    <i class="fas fa-radio"></i> পূজো রেডিও
+                </button>
+                <button class="tab-btn" data-playlist="mahalaya">
+                    <i class="fas fa-om"></i> মহালয়া
+                </button>
+                <button id="toggle-playlist-btn" class="playlist-drawer-btn" title="গান তালিকা">
+                    <i class="fas fa-list-ul"></i> প্লে-লিস্ট
+                </button>
+            </div>
+
+            <!-- Playlist status -->
+            <div id="playlist-status" class="playlist-status">
+                <i class="fab fa-youtube"></i> <span id="playlist-status-text">YouTube Playlist থেকে গান চলছে</span>
+            </div>
+
+            <!-- Player Main Controls & Track Info -->
+            <div class="player-main">
+                <div class="track-info">
+                    <div class="track-icon">
+                        <i class="fas fa-music pulse-icon"></i>
+                    </div>
+                    <div class="track-text">
+                        <span id="current-track-name" class="track-name">মহালয়া - মহিষাসুরমর্দিনী</span>
+                        <span id="current-artist" class="track-artist">বীরেন্দ্রকৃষ্ণ ভদ্র</span>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="player-controls">
+                    <button id="prev-btn" class="control-btn" title="Previous"><i class="fas fa-step-backward"></i></button>
+                    <button id="play-pause-btn" class="control-btn play-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
+                    <button id="next-btn" class="control-btn" title="Next"><i class="fas fa-step-forward"></i></button>
+                </div>
+
+                <!-- Progress Bar & Time -->
+                <div class="progress-container">
+                    <span id="current-time">0:00</span>
+                    <div class="progress-bar-wrap" id="progress-wrap">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <span id="total-duration">0:00</span>
+                </div>
+            </div>
+
+            <!-- Song List Drawer -->
+            <div class="playlist-drawer" id="playlist-drawer">
+                <div class="drawer-header">
+                    <span id="drawer-title">পূজো রেডিও - গানের তালিকা</span>
+                    <i class="fas fa-times close-drawer" id="close-drawer"></i>
+                </div>
+                <ul class="song-list" id="song-list">
+                    <!-- Dynamic playlist items injected via JS -->
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Hidden YouTube Player Container (iFrame API) -->
+    <div id="yt-player-container">
+        <div id="youtube-iframe" title="YouTube Music Player"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Photo changer: arrows + dots -->
+    <style>
+      .bg-arrow {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 12;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+      }
+      .bg-arrow:hover { background: rgba(255, 255, 255, 0.25); }
+      #bg-prev { left: 15px; }
+      #bg-next { right: 15px; }
+      .bg-dots {
+        position: fixed;
+        left: 30px;
+        bottom: 40px;
+        z-index: 22;
+        display: flex;
+        gap: 10px;
+      }
+      .bg-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: none;
+        padding: 0;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+      }
+      .bg-dot.active {
+        background: #fff;
+        transform: scale(1.3);
+      }
+    </style>
+
+    <button id="bg-prev" class="bg-arrow" aria-label="Previous photo">&#10094;</button>
+    <button id="bg-next" class="bg-arrow" aria-label="Next photo">&#10095;</button>
+    <div class="bg-dots" id="bg-dots"></div>
+
+    <script>
+      const bgPhotos = [
+        'images/background01.png',
+        'images/background.png',
+        'images/background_old.png'
+      ];
+      let bgIndex = 0;
+
+      const dotsBox = document.getElementById('bg-dots');
+      bgPhotos.forEach((photo, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'bg-dot';
+        dot.setAttribute('aria-label', 'Photo ' + (i + 1));
+        dot.addEventListener('click', () => showPhoto(i));
+        dotsBox.appendChild(dot);
+        new Image().src = photo; // loads the photo early so switching is quick
+      });
+
+      function showPhoto(i) {
+        bgIndex = (i + bgPhotos.length) % bgPhotos.length;
+        document.body.style.backgroundImage = "url('" + bgPhotos[bgIndex] + "')";
+        document.querySelectorAll('.bg-dot').forEach((d, n) => {
+          d.classList.toggle('active', n === bgIndex);
+        });
+      }
+
+      document.getElementById('bg-prev').addEventListener('click', () => showPhoto(bgIndex - 1));
+      document.getElementById('bg-next').addEventListener('click', () => showPhoto(bgIndex + 1));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') showPhoto(bgIndex - 1);
+        if (e.key === 'ArrowRight') showPhoto(bgIndex + 1);
+      });
+
+      showPhoto(0);
+    </script>
+
+</body>
+</html>

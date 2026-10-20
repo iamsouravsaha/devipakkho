@@ -1,0 +1,13 @@
+HOW TO OPEN THIS WEBSITE
+
+1. Right-click the zip file and choose "Extract All".
+2. Open the extracted folder "maaaschen".
+3. Double-click "index.html". It opens in your browser.
+
+Note: The YouTube songs may not play when you double-click the file.
+They play properly when the site is online (GitHub) or opened with
+VS Code "Live Server" (Go Live).
+
+TO ADD SONGS
+Open js/main.js in Notepad, find "const playlists", and add one
+YouTube link per line in each list (comma after every link).

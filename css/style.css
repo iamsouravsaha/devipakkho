@@ -1,0 +1,1509 @@
+/* Light Aesthetics & Transparent Glassmorphism - Durga Pujo Website */
+
+:root {
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --gold-soft: #f1d388;
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+    --hover-bg: rgba(255, 255, 255, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Anek Bangla', 'Poppins', sans-serif;
+    background-color: #121015;
+    background-image: url('../images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Light transparent vignette overlay */
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    z-index: 1;
+}
+
+/* Glass Widget Standard Style */
+.glass-widget {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 7px 18px;
+    box-shadow: var(--glass-shadow);
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    z-index: 10;
+}
+
+/* Live Page Visitor Widget (Left) */
+.visitor-widget {
+    color: var(--text-secondary);
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4ef0d0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4ef0d0;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(78, 240, 208, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(78, 240, 208, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(78, 240, 208, 0); }
+}
+
+/* Center Clock & Countdown Stack */
+.center-widgets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.clock-widget {
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.colon-blink {
+    animation: blink 1s infinite;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 1px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.countdown-widget {
+    font-size: 0.8rem;
+    color: var(--gold-soft);
+}
+
+/* Transparent White User Icon (Right) */
+.profile-icon-btn {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    color: #ffffff;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--glass-shadow);
+}
+
+.profile-icon-btn:hover {
+    background: var(--hover-bg);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.08);
+}
+
+/* Modal Popup */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    color: #fff;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.avatar {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #fff;
+    border: 1px solid var(--glass-border);
+}
+
+.fa-spin-slow {
+    animation: spin 15s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.profile-header h3 {
+    font-family: 'Atma', cursive;
+    font-size: 1.7rem;
+    color: var(--gold-soft);
+}
+
+.user-subtitle {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+}
+
+.info-row {
+    background: rgba(255,255,255,0.08);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.social-title {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid var(--glass-border);
+    transition: all 0.2s;
+}
+
+.social-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+.contact-box {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.contact-box a {
+    color: var(--gold-soft);
+    text-decoration: none;
+}
+
+/* Hero Section & Main Title */
+.hero-container {
+    position: relative;
+    z-index: 5;
+    height: calc(100vh - 160px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.main-title {
+    font-family: 'Atma', cursive, serif;
+    font-size: clamp(3.8rem, 8.5vw, 6.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    letter-spacing: 2px;
+    line-height: 1.1;
+}
+
+.sub-title {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-weight: 400;
+    max-width: 650px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Bottom Right Dhak Button */
+.bottom-right-dhak {
+    position: fixed;
+    bottom: 120px;
+    right: 30px;
+    z-index: 25;
+    cursor: pointer;
+}
+
+.dhak-glass-btn {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+}
+
+.dhak-glass-btn:hover {
+    background: var(--hover-bg);
+    transform: scale(1.08);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.dhak-icon {
+    font-size: 1.3rem;
+    color: var(--gold-soft);
+}
+
+.dhak-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Glassmorphism Player Footer */
+.player-footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 880px;
+    z-index: 20;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    padding: 14px 22px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Transparent Playlist Tabs */
+.playlist-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 8px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    padding: 5px 15px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    background: var(--hover-bg);
+    border-color: var(--glass-border);
+    color: #fff;
+}
+
+.playlist-drawer-btn {
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+}
+
+.playlist-drawer-btn:hover {
+    background: var(--hover-bg);
+}
+
+.player-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.track-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+.track-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.track-text {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.track-artist {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+/* Control Buttons */
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.control-btn:hover {
+    background: var(--hover-bg);
+    transform: scale(1.05);
+}
+
+.play-btn {
+    background: rgba(255, 255, 255, 0.25);
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+}
+
+/* Progress Bar */
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 2 1 240px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.progress-bar-wrap {
+    flex: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+/* Song List Drawer Modal/Slide-up */
+.playlist-drawer {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    background: rgba(20, 18, 25, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    z-index: 15;
+}
+
+.playlist-drawer.open {
+    max-height: 260px;
+    padding: 15px 20px;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.close-drawer {
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.song-list {
+    list-style: none;
+    overflow-y: auto;
+    max-height: 190px;
+    margin-top: 8px;
+}
+
+.song-list::-webkit-scrollbar {
+    width: 4px;
+}
+.song-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.song-item {
+    padding: 8px 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+    color: var(--text-secondary);
+}
+
+.song-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.song-item.active {
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 0 12px;
+    }
+
+    .glass-widget {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+
+    .bottom-right-dhak {
+        bottom: 150px;
+        right: 15px;
+    }
+
+    .player-footer {
+        width: 95%;
+        bottom: 10px;
+    }
+
+    .player-main {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .track-info {
+        justify-content: center;
+    }
+
+    .progress-container {
+        width: 100%;
+    }
+}
+/* ============================================================
+   Requested Updates: combined clock/countdown, Mahalaya, mobile
+   ============================================================ */
+.clock-countdown-widget {
+    gap: 12px;
+    padding: 7px 15px;
+    white-space: nowrap;
+}
+
+.clock-part,
+.countdown-part {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.clock-part {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.countdown-part {
+    color: var(--gold-soft);
+    font-size: 0.8rem;
+}
+
+.countdown-part strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.widget-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255,255,255,0.28);
+}
+
+.mahalaya-input-section {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 12px;
+}
+
+.mahalaya-input-section > i {
+    color: #ff6b6b;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.mahalaya-input-section input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid rgba(255,255,255,0.18);
+    outline: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.18);
+    color: #fff;
+    font-family: inherit;
+}
+
+.mahalaya-input-section input::placeholder {
+    color: rgba(255,255,255,0.65);
+}
+
+.mahalaya-input-section button {
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.mahalaya-input-section button:hover {
+    background: var(--hover-bg);
+}
+
+.dhak-playing .dhak-glass-btn {
+    background: rgba(241, 211, 136, 0.22);
+    border-color: var(--gold-soft);
+}
+
+.song-number {
+    min-width: 26px;
+    opacity: 0.65;
+}
+
+.song-title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.empty-song-list {
+    justify-content: center;
+    cursor: default;
+}
+
+/* Better mobile layout without changing the original desktop design */
+@media (max-width: 768px) {
+    body {
+        height: 100dvh;
+        min-height: 620px;
+        overflow: hidden;
+        background-attachment: scroll;
+    }
+
+    .top-nav {
+        top: 10px;
+        padding: 0 10px;
+        align-items: flex-start;
+    }
+
+    .visitor-widget {
+        display: none;
+    }
+
+    .center-widgets {
+        width: calc(100% - 48px);
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .clock-countdown-widget {
+        max-width: 100%;
+        gap: 8px;
+        padding: 6px 10px;
+        font-size: 0.72rem;
+    }
+
+    .clock-part {
+        font-size: 0.82rem;
+    }
+
+    .countdown-part {
+        font-size: 0.68rem;
+        gap: 4px;
+    }
+
+    .widget-divider {
+        height: 20px;
+    }
+
+    .profile-icon-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+
+    .hero-container {
+        height: calc(100dvh - 120px);
+        min-height: 480px;
+        padding: 20px 14px 170px;
+    }
+
+    .main-title {
+        font-size: clamp(3rem, 16vw, 5rem);
+    }
+
+    .sub-title {
+        font-size: 0.88rem;
+        max-width: 94%;
+        line-height: 1.45;
+    }
+
+    .bottom-right-dhak {
+        bottom: 132px;
+        right: 12px;
+    }
+
+    .dhak-glass-btn {
+        padding: 9px 13px;
+        gap: 7px;
+    }
+
+    .dhak-label {
+        font-size: 0.75rem;
+    }
+
+    .player-footer {
+        width: calc(100% - 16px);
+        max-width: none;
+        bottom: 8px;
+    }
+
+    .glass-panel {
+        padding: 10px;
+        border-radius: 16px;
+    }
+
+    .playlist-tabs {
+        gap: 4px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 6px;
+    }
+
+    .playlist-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn,
+    .playlist-drawer-btn {
+        padding: 5px 9px;
+        font-size: 0.72rem;
+        flex-shrink: 0;
+    }
+
+    .playlist-drawer-btn {
+        margin-left: 0;
+    }
+
+    .mahalaya-input-section {
+        flex-wrap: wrap;
+    }
+
+    .mahalaya-input-section input {
+        min-width: 0;
+        width: calc(100% - 30px);
+    }
+
+    .mahalaya-input-section button {
+        width: 100%;
+    }
+
+    .player-main {
+        gap: 7px;
+    }
+
+    .track-info {
+        width: 100%;
+        justify-content: flex-start;
+        flex-basis: auto;
+    }
+
+    .track-name {
+        font-size: 0.82rem;
+    }
+
+    .track-artist {
+        font-size: 0.68rem;
+    }
+
+    .player-controls {
+        gap: 7px;
+    }
+
+    .control-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .play-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .progress-container {
+        width: 100%;
+        flex-basis: auto;
+        font-size: 0.68rem;
+    }
+
+    .playlist-drawer.open {
+        max-height: 230px;
+        padding: 10px;
+    }
+
+    .song-list {
+        max-height: 170px;
+    }
+
+    .song-item {
+        font-size: 0.78rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 420px) {
+    .clock-countdown-widget {
+        gap: 6px;
+        padding: 5px 8px;
+    }
+
+    .countdown-part span {
+        display: none;
+    }
+
+    .countdown-part strong {
+        font-size: 0.66rem;
+    }
+
+    .hero-container {
+        padding-bottom: 180px;
+    }
+
+    .bottom-right-dhak {
+        bottom: 142px;
+    }
+}
+
+
+/* ============================================================
+   Added: three top action icons + Puja Nirghonto + QR directory
+   ============================================================ */
+.top-action-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.top-action-icons .profile-icon-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+}
+
+.utility-modal-title {
+    font-family: 'Atma', cursive;
+    color: var(--gold-soft);
+    font-size: 1.55rem;
+    margin-top: 4px;
+}
+
+.utility-modal-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    margin: 2px 0 16px;
+}
+
+.modal-heading-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 7px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid var(--glass-border);
+    color: var(--gold-soft);
+    font-size: 1.15rem;
+}
+
+.nirghonto-modal-content {
+    max-width: 680px;
+    padding: 22px;
+}
+
+.nirghonto-table-wrap {
+    max-height: 52vh;
+    overflow: auto;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    background: rgba(0,0,0,0.13);
+}
+
+.nirghonto-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    text-align: left;
+}
+
+.nirghonto-table th {
+    color: var(--gold-soft);
+    font-weight: 600;
+    background: rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.nirghonto-table th,
+.nirghonto-table td {
+    padding: 10px 9px;
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+    vertical-align: top;
+}
+
+.nirghonto-table td:first-child {
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nirghonto-table td:nth-child(2) {
+    color: var(--gold-soft);
+    white-space: nowrap;
+}
+
+.nirghonto-note {
+    margin-top: 12px;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.7rem;
+    line-height: 1.45;
+}
+
+.nirghonto-note i {
+    color: var(--gold-soft);
+    margin-right: 4px;
+}
+
+.qr-modal-content {
+    max-width: 390px;
+    padding: 22px;
+}
+
+.qr-box {
+    width: 230px;
+    height: 230px;
+    margin: 6px auto 16px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+#puja-qr-code {
+    width: 210px;
+    height: 210px;
+    display: block;
+}
+
+.puja-list-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    padding: 10px 13px;
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid var(--glass-border);
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.puja-list-link:hover {
+    background: var(--hover-bg);
+    transform: translateY(-1px);
+}
+
+.playlist-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 20px;
+    margin: -2px 0 8px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.68rem;
+}
+
+.playlist-status i {
+    color: #ff6b6b;
+}
+
+/* Slightly smaller supporting text; main headings remain unchanged. */
+.visitor-widget,
+.glass-widget,
+.tab-btn,
+.playlist-drawer-btn,
+.track-name,
+.track-artist,
+.song-item,
+.dhak-label,
+.sub-title,
+.info-row,
+.contact-box,
+.social-title {
+    font-size: 0.82rem;
+}
+
+.track-name { font-size: 0.88rem; }
+.track-artist { font-size: 0.72rem; }
+.sub-title { font-size: clamp(0.88rem, 1.6vw, 1.08rem); }
+
+@media (max-width: 768px) {
+    .top-action-icons { gap: 5px; }
+    .top-action-icons .profile-icon-btn { width: 36px; height: 36px; font-size: 0.88rem; }
+    .nirghonto-modal-content { width: 94%; padding: 17px 12px; }
+    .qr-modal-content { width: 92%; }
+    .nirghonto-table { font-size: 0.69rem; }
+    .nirghonto-table th, .nirghonto-table td { padding: 8px 6px; }
+    .utility-modal-title { font-size: 1.35rem; }
+    .utility-modal-subtitle { font-size: 0.7rem; }
+    .playlist-status { font-size: 0.62rem; }
+}
+
+@media (max-width: 420px) {
+    .top-action-icons .profile-icon-btn { width: 34px; height: 34px; }
+    .clock-countdown-widget { max-width: calc(100vw - 105px); }
+    .nirghonto-table { font-size: 0.64rem; }
+}
+
+/* YouTube IFrame API technical player: kept valid but visually hidden.
+   This does not alter the visible website design. */
+#youtube-iframe {
+    position: fixed !important;
+    width: 200px !important;
+    height: 200px !important;
+    left: -9999px !important;
+    top: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* YouTube technical player container: NOT display:none.
+   YouTube requires a real 200x200 viewport for the IFrame API.
+   It remains completely invisible to the visitor. */
+#yt-player-container {
+    position: fixed !important;
+    width: 200px !important;
+    height: 200px !important;
+    left: -9999px !important;
+    top: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+}
+
+/* Technical YouTube player only — invisible, no visible design change. */
+#yt-player-container {
+    position: fixed !important;
+    width: 200px !important;
+    height: 200px !important;
+    left: -9999px !important;
+    top: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+}
+#youtube-iframe {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+#yt-player-container { width:200px !important; height:200px !important; }
+#youtube-iframe { width:200px !important; height:200px !important; }
+
+/* Technical YouTube player only. Visible website design remains unchanged. */
+#yt-player-container {
+    position: fixed !important;
+    width: 200px !important;
+    height: 200px !important;
+    left: -9999px !important;
+    top: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+}
+#youtube-iframe {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+/* YouTube API technical viewport. It stays off-screen so the website design
+   remains unchanged while the IFrame API has a valid viewport. */
+#yt-player-container {
+    position: fixed !important;
+    width: 200px !important;
+    height: 200px !important;
+    left: -10000px !important;
+    top: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    display: block !important;
+}
+#youtube-iframe {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+/* Technical YouTube viewport only. It is outside the visible layout. */
+#yt-player-container {
+    position: fixed !important;
+    width: 200px !important;
+    height: 200px !important;
+    left: -220px !important;
+    top: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    display: block !important;
+    z-index: 0 !important;
+}
+#youtube-iframe {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+/* ===== Playlist fix + smaller player ===== */
+
+/* Lets the playlist show above the player */
+.music-player-card.glass-panel {
+    overflow: visible;
+}
+.playlist-drawer {
+    visibility: hidden;
+    border-width: 0;
+}
+.playlist-drawer.open {
+    visibility: visible;
+    border-width: 1px 1px 0 1px;
+}
+
+/* Smaller player (computer screens only) */
+@media (min-width: 769px) {
+    .player-footer {
+        max-width: 620px;
+        bottom: 16px;
+    }
+    .music-player-card.glass-panel {
+        padding: 10px 16px;
+        border-radius: 16px;
+    }
+    .playlist-tabs {
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+        gap: 6px;
+    }
+    .tab-btn,
+    .playlist-drawer-btn {
+        padding: 3px 10px;
+        font-size: 0.75rem !important;
+    }
+    .playlist-status {
+        font-size: 0.7rem;
+    }
+    .player-main {
+        gap: 10px;
+    }
+    .track-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+    .track-name {
+        font-size: 0.85rem !important;
+    }
+    .track-artist {
+        font-size: 0.7rem !important;
+    }
+    .control-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+    .play-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+    .progress-container {
+        font-size: 0.7rem;
+        flex: 2 1 150px;
+    }
+}
+
+/* ===== Full playlist list + song icons ===== */
+.playlist-drawer.open {
+    max-height: min(60vh, 440px);
+}
+.song-list {
+    max-height: calc(min(60vh, 440px) - 75px);
+}
+.song-icon {
+    width: 20px;
+    text-align: center;
+    opacity: 0.85;
+    flex-shrink: 0;
+}
+.song-item {
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+/* ===== Animated music icon (changes with the song's vibe) ===== */
+.track-icon {
+    position: relative;
+    --beat: 2s;
+}
+
+/* Glow + ripple ring while a song is playing */
+.track-icon.is-playing {
+    border-color: var(--gold-soft, #f1d388);
+    box-shadow: 0 0 12px rgba(241, 211, 136, 0.35);
+}
+.track-icon.is-playing::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    border: 2px solid rgba(241, 211, 136, 0.75);
+    pointer-events: none;
+    animation: iconRing var(--beat) ease-out infinite;
+}
+@keyframes iconRing {
+    0%   { transform: scale(1);   opacity: 0.8; }
+    100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* Default: a gentle bounce for any other music */
+.track-icon.is-playing i {
+    animation: iconBounce var(--beat) ease-in-out infinite;
+}
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50%      { transform: translateY(-3px) rotate(-8deg); }
+}
+
+/* DHAK / drums: two quick hits, then a pause */
+.track-icon.vibe-drum { --beat: 1.2s; }
+.track-icon.vibe-drum-steelpan { --beat: 0.9s; }
+.track-icon.is-playing.vibe-drum i,
+.track-icon.is-playing.vibe-drum-steelpan i {
+    animation: iconDhak var(--beat) ease-out infinite;
+}
+.track-icon.is-playing.vibe-drum::after,
+.track-icon.is-playing.vibe-drum-steelpan::after {
+    animation: iconRingDhak var(--beat) ease-out infinite;
+}
+@keyframes iconDhak {
+    0%   { transform: scale(1) rotate(0); }
+    8%   { transform: scale(1.35) rotate(-10deg); }
+    16%  { transform: scale(1) rotate(0); }
+    26%  { transform: scale(1.25) rotate(10deg); }
+    36%  { transform: scale(1) rotate(0); }
+    100% { transform: scale(1) rotate(0); }
+}
+@keyframes iconRingDhak {
+    0%   { transform: scale(1);   opacity: 0.9; }
+    14%  { transform: scale(1.6); opacity: 0; }
+    26%  { transform: scale(1);   opacity: 0.9; }
+    40%  { transform: scale(1.5); opacity: 0; }
+    100% { transform: scale(1);   opacity: 0; }
+}
+
+/* OM / devotional: slow breathing glow */
+.track-icon.vibe-om { --beat: 3.2s; }
+.track-icon.is-playing.vibe-om i { animation: iconOm var(--beat) ease-in-out infinite; }
+@keyframes iconOm {
+    0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 0 rgba(241, 211, 136, 0)); }
+    50%      { transform: scale(1.18); filter: drop-shadow(0 0 7px rgba(241, 211, 136, 0.95)); }
+}
+
+/* Love songs: heartbeat */
+.track-icon.vibe-heart { --beat: 1.1s; }
+.track-icon.is-playing.vibe-heart i { animation: iconHeart var(--beat) ease-in-out infinite; }
+@keyframes iconHeart {
+    0%, 70%, 100% { transform: scale(1); }
+    14%           { transform: scale(1.3); }
+    28%           { transform: scale(1); }
+    42%           { transform: scale(1.3); }
+}
+
+/* Agomoni / kashful: swaying plant */
+.track-icon.vibe-seedling { --beat: 2.4s; }
+.track-icon.is-playing.vibe-seedling i {
+    transform-origin: 50% 100%;
+    animation: iconSway var(--beat) ease-in-out infinite;
+}
+@keyframes iconSway {
+    0%, 100% { transform: rotate(-12deg); }
+    50%      { transform: rotate(12deg); }
+}
+
+/* Bijoya / bisarjan: flowing water */
+.track-icon.vibe-water { --beat: 2s; }
+.track-icon.is-playing.vibe-water i { animation: iconWave var(--beat) ease-in-out infinite; }
+@keyframes iconWave {
+    0%, 100% { transform: translateY(0) skewX(0); }
+    25%      { transform: translateY(-3px) skewX(-8deg); }
+    75%      { transform: translateY(3px) skewX(8deg); }
+}
+
+/* Guitar: strumming */
+.track-icon.vibe-guitar { --beat: 1.4s; }
+.track-icon.is-playing.vibe-guitar i { animation: iconStrum var(--beat) ease-in-out infinite; }
+@keyframes iconStrum {
+    0%, 40%, 100% { transform: rotate(0); }
+    10%           { transform: rotate(-14deg); }
+    20%           { transform: rotate(12deg); }
+    30%           { transform: rotate(-8deg); }
+}
+
+/* Remix / dance: spinning record */
+.track-icon.vibe-record-vinyl { --beat: 2.2s; }
+.track-icon.is-playing.vibe-record-vinyl i { animation: iconSpin var(--beat) linear infinite; }
+@keyframes iconSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Radio: signal pulse */
+.track-icon.vibe-radio { --beat: 1.6s; }
+.track-icon.is-playing.vibe-radio i { animation: iconRadio var(--beat) ease-in-out infinite; }
+@keyframes iconRadio {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.18) rotate(-4deg); }
+}
+
+/* Bell / shankh: ringing */
+.track-icon.vibe-bell { --beat: 1.8s; }
+.track-icon.is-playing.vibe-bell i {
+    transform-origin: 50% 0;
+    animation: iconBell var(--beat) ease-in-out infinite;
+}
+@keyframes iconBell {
+    0%, 75%, 100% { transform: rotate(0); }
+    15%           { transform: rotate(22deg); }
+    30%           { transform: rotate(-18deg); }
+    45%           { transform: rotate(12deg); }
+    60%           { transform: rotate(-6deg); }
+}
+
+/* Flute (bansuri): floating air */
+.track-icon.vibe-wind { --beat: 2s; }
+.track-icon.is-playing.vibe-wind i { animation: iconFlute var(--beat) ease-in-out infinite; }
+@keyframes iconFlute {
+    0%, 100% { transform: translateX(-3px) rotate(-6deg); }
+    50%      { transform: translateX(3px) rotate(6deg); }
+}
+
+/* Aarti: flickering flame */
+.track-icon.vibe-fire { --beat: 0.8s; }
+.track-icon.is-playing.vibe-fire i {
+    transform-origin: 50% 100%;
+    animation: iconFlame var(--beat) ease-in-out infinite;
+}
+@keyframes iconFlame {
+    0%, 100% { transform: scale(1, 1) skewX(0); }
+    25%      { transform: scale(0.92, 1.1) skewX(4deg); }
+    50%      { transform: scale(1.08, 0.95) skewX(-4deg); }
+    75%      { transform: scale(0.95, 1.08) skewX(3deg); }
+}
+
+/* People who prefer less motion get a still icon */
+@media (prefers-reduced-motion: reduce) {
+    .track-icon.is-playing i,
+    .track-icon.is-playing::after {
+        animation: none !important;
+    }
+}
