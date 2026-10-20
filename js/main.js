@@ -15,10 +15,10 @@ const playlists = {
         videos: ['YQyo8QeoYhc']
     },
 
-    //'pujo-prem': {
-    //    type: 'videos',
-    //    videos: ['qAvT2OcMdnk']
-    //},
+    'pujo-prem': {
+        type: 'videos',
+        videos: ['qAvT2OcMdnk']
+    },
 
     'pujo-radio': {
         type: 'videos',
